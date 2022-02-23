@@ -1,3 +1,0 @@
-C:/Users/jedua/Documents/GitHub/Search-Algorithm/cmake-build-debug/CMakeFiles/Search_Algorithm.dir
-C:/Users/jedua/Documents/GitHub/Search-Algorithm/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/jedua/Documents/GitHub/Search-Algorithm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
