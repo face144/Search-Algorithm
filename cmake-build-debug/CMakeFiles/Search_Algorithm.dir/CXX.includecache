@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Grid.h
+vector
+-
+iostream
+-
+fstream
+-
+sstream
+-
+stdexcept
+-
+Node.h
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Node.h
+
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Node.h
+vector
+-
+
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Search.cpp
+Search.h
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Search.h
+
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Search.h
+Grid.h
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Grid.h
+Node.h
+C:/Users/jedua/Documents/GitHub/Search-Algorithm/Node.h
+ctime
+-
+
