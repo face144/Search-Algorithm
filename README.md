@@ -2,6 +2,8 @@
  This repo is a search algorithm that represents an artifical intelligence. It creates a node grid and searches through it's connections until it reaches the desired node.
  The nodes and their connections are given through a text file.
  
+ <br>
+ 
 # How to use the search algorithms
  Start by creating a project in your text editor/IDE and adding the files from this repo to your project.
  
@@ -13,9 +15,13 @@
   
  Important: A node's ID is the number you used to reference it in the .txt file containing the node's connections.
  
+ <br>
+ 
 # Important notes
  This repo is still a Work-In-Progress, feel free to contribute to this.
- Right now the search algorithm is not finished and wont work as expected.
+ As of right now there are only breath-first-search and depth-first-search algorithms.
+ 
+ <br>
  
 # Documentation (for developers)
  General information: <br></br>
