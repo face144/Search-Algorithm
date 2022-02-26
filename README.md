@@ -64,5 +64,6 @@ Search: <br></br>
 
  Members: <br>
  
-   - (Constructor) Search(string filename, int startNodeID, int endNodeID). It initializes the nodes and grid through the text file and sets the start and end node so it knows where to start and to stop.
-   - Start(). It starts the search (Depth-First Search), It outputs to the console the total number of steps and the current node it's in.
+  - (Constructor) Search(string filename). It initializes the nodes and grid through the text file.
+  - BreathFirstSearch (int startNodeID);
+  - DepthFirstSearch (int startNodeID).
