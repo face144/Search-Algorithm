@@ -2,11 +2,22 @@
  This repo is a search algorithm that represents an artifical intelligence. It creates a node grid and searches through it's connections until it reaches the desired node.
  The nodes and their connections are given through a text file.
  
+# How to use the search algorithms
+ Start by creating a project in your text editor/IDE and adding the files from this repo to your project.
+ 
+ You must have a text file with the total nodes and their connections to other nodes (see "text.txt" for example).
+ 
+ To use the search algorithms you must create an instance of the "Search" class. The Search class has the following members:
+  - void BreathFirstSearch (int startNodeID);
+  - void DepthFirstSearch (int startNodeID);
+  
+ Important: A node's ID is the number you used to reference it in the .txt file containing the node's connections.
+ 
 # Important notes
  This repo is still a Work-In-Progress, feel free to contribute to this.
  Right now the search algorithm is not finished and wont work as expected.
  
-# Documentation
+# Documentation (for developers)
  General information: <br></br>
   The outter layer object (Search) recieves an input file with information about the node grid and it's connections. The input file has a specific syntax, you must write the total nodes and every connection in a node, the syntax is as follow:
    - "t 20" (If there are 20 nodes in total, should only be written once);
