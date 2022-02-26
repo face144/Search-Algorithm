@@ -1,67 +1,83 @@
 #include "Search.h"
 
-Search::Search(const string& filename, int startNodeID, int endNodeID) {
-    this->startNodeID = startNodeID;
-    this->endNodeID = endNodeID;
-    steps = 0;
+Search::Search(const string& filename) {
     grid = *new Grid(filename);
-    srand(time(NULL));
 }
 
-Search::~Search() {
+Search::~Search() = default;
 
-}
-
-void Search::Start() {
+void Search::DFS(int startNodeID) {
     int currentNodeID = startNodeID;
-    cout << "--- Search Start ---" << endl;
-    cout << "Starting on Node " << currentNodeID << endl << endl;
+    cout << "Current Node: " << currentNodeID << endl;
+    AddVisitedNode(currentNodeID);
 
-    do {
-        steps++;
-        if (!NodeIsDead(currentNodeID)) {
-            if (NodeIsDead(grid.GetLowestCostConnection(currentNodeID)))
+    vector <connection> conn = grid.GetConnections(currentNodeID);
+    for (auto & i : conn) {
+        if (!NodeIsVisited(i.connectedNode->GetID()))
+            DepthFirstSearch(i.connectedNode->GetID());
+    }
+}
 
+void Search::DepthFirstSearch(int startNodeID) {
+    visitedNodes.clear();
+    nodeQueue.clear();
+    DFS(startNodeID);
+}
+
+void Search::BFS(int startNodeID) {
+    int currentNodeID = startNodeID;
+    AddVisitedNode(currentNodeID);
+    AddNodeToQueue(currentNodeID);
+
+    while(!nodeQueue.empty()) {
+        currentNodeID = nodeQueue.front();
+        cout << "Current Node: " << currentNodeID << endl;
+        nodeQueue.pop_front();
+
+        vector <connection> conn = grid.GetConnections(currentNodeID);
+        for (auto & i : conn) {
+            if (!NodeIsVisited(i.connectedNode->GetID())) {
+                AddVisitedNode(i.connectedNode->GetID());
+                AddNodeToQueue(i.connectedNode->GetID());
+            }
         }
-
-        cout << "Step Number: " << steps << endl;
-        cout << "Current Node ID: " << currentNodeID << endl << endl;
-
-    } while (currentNodeID != endNodeID);
-    cout << "--- Search End ---" << endl;
-    cout << "Solution Found!" << endl;
-
-    system("pause");
+    }
 }
 
-bool Search::NodeIsRepeated(int id) {
-    for (auto &n : previousNodes) {
+void Search::BreathFirstSearch(int startNodeID) {
+    visitedNodes.clear();
+    nodeQueue.clear();
+    BFS(startNodeID);
+}
+
+bool Search::NodeIsVisited(int id) {
+    for (auto &n : visitedNodes) {
         if (n == id)
             return true;
     }
     return false;
 }
 
-bool Search::NodeIsDead(int id) {
-    for (auto &n : deadNodes) {
+bool Search::NodeIsQueued (int id) {
+    for (auto &n : nodeQueue) {
         if (n == id)
             return true;
     }
     return false;
 }
 
-void Search::AddUsedNode(int id) {
-    for (auto & i : previousNodes) {
+void Search::AddVisitedNode (int id) {
+    for (auto & i : visitedNodes) {
         if (i == id)
             return;
     }
-    previousNodes.emplace_back(id);
+    visitedNodes.emplace_back(id);
 }
 
-void Search::AddDeadNode(int id) {
-    for (auto & i : deadNodes) {
+void Search::AddNodeToQueue (int id) {
+    for (auto & i : nodeQueue) {
         if (i == id)
             return;
     }
-    deadNodes.emplace_back(id);
+    nodeQueue.emplace_back(id);
 }

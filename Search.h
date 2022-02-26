@@ -4,24 +4,25 @@
 #include "Grid.h"
 #include "Node.h"
 #include <ctime>
+#include <list>
 
 class Search {
-    int startNodeID;
-    int endNodeID;
-    int steps;
     Grid grid;
-    vector <int> previousNodes;
-    vector <int> deadNodes;
+    vector <int> visitedNodes;
+    list <int> nodeQueue;
 
-    bool NodeIsRepeated(int id);
-    bool NodeIsDead(int id);
-    void AddUsedNode(int id);
-    void AddDeadNode(int id);
+    bool NodeIsVisited(int id);
+    bool NodeIsQueued(int id);
+    void AddVisitedNode(int id);
+    void AddNodeToQueue(int id);
+    void DFS(int startNodeID);
+    void BFS(int startNodeID);
 
 public:
-    Search(const string &filename, int startNodeID, int endNodeID);
+    explicit Search(const string &filename);
     ~Search();
-    void Start();
+    void BreathFirstSearch(int startNodeID);
+    void DepthFirstSearch(int startNodeID);
 
 };
 

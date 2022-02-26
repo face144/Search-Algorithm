@@ -12,12 +12,12 @@ using namespace std;
 class Grid {
     vector <Node> grid;
     int totalNodes;
-    vector <connection> GetConnections(int currentNodeID);
 
 public:
     Grid();
     Grid(const string& filename);
     ~Grid();
+    vector <connection> GetConnections(int currentNodeID);
     int GetLowestCostConnection(int currentNode);
 };
 
