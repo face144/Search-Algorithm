@@ -3,4 +3,4 @@ project(Search_Algorithm)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Search_Algorithm main.cpp Search.cpp Search.h Node.cpp Node.h Grid.cpp Grid.h)
+add_executable(Search_Algorithm main.cpp Search.cpp Search.h Node.cpp Node.h Grid.cpp Grid.h Cell.cpp Cell.h)

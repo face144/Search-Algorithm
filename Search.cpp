@@ -4,6 +4,10 @@ Search::Search(const string& filename) {
     grid = *new Grid(filename);
 }
 
+Search::Search() {
+
+}
+
 Search::~Search() = default;
 
 void Search::DFS(int startNodeID) {
@@ -44,6 +48,54 @@ void Search::BFS(int startNodeID) {
     }
 }
 
+void Search::GeneticSearch(string target, string genes) {
+
+    bool found = false;
+    for (int i = 0; i < populationSize; i++) {
+        string gnome = CreateGnome();
+        population.emplace_back(Cell(gnome));
+    }
+
+    while (!found) {
+        sort(population.begin(), population.end());
+
+        if (population[0].GetFitness() <= 0) {
+            found = true;
+            break;
+        }
+
+        vector <Cell> newPopulation;
+
+        int s = (10 * populationSize) / 100;
+        for (int i = 0; i < s; ++i) {
+            newPopulation.push_back(population[i]);
+        }
+
+        s = (90 * populationSize) / 100;
+        for (int i = 0; i < s; ++i) {
+            int len = population.size();
+            int r = RandomNum(0, 50);
+            Cell parent1 = population[r];
+            r = RandomNum(0, 50);
+            Cell parent2 = population[r];
+            Cell offspring = parent1.Mate(parent2);
+            newPopulation.push_back(offspring);
+        }
+
+        population = newPopulation;
+
+        cout<< "Generation: " << generation << "\t";
+        cout<< "String: "<< population[0].chromosome <<"\t";
+        cout<< "Fitness: "<< population[0].fitness << "\n";
+
+        generation++;
+    }
+
+    cout<< "Generation: " << generation << "\t";
+    cout<< "String: "<< population[0].chromosome <<"\t";
+    cout<< "Fitness: "<< population[0].fitness << "\n";
+}
+
 void Search::BreathFirstSearch(int startNodeID) {
     visitedNodes.clear();
     nodeQueue.clear();
@@ -80,4 +132,20 @@ void Search::AddNodeToQueue (int id) {
             return;
     }
     nodeQueue.emplace_back(id);
+}
+
+string Search::CreateGnome() {
+    int len = target.size();
+    string gnome = "";
+    for (int i = 0; i < len; ++i) {
+        gnome += MutatedGenes();
+    }
+    return gnome;
+}
+
+char Search::MutatedGenes()
+{
+    int len = genes.size();
+    int r = RandomNum(0, len - 1);
+    return genes[r];
 }

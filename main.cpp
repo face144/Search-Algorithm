@@ -1,13 +1,14 @@
-#include "Search.h"
+/*#include "Search.h"
 
 int main() {
-    Search a("test.txt");
-    a.BreathFirstSearch(1);
-    system("pause");
-    a.DepthFirstSearch(1);
+    string target = "aye like turtles";
+    string genes = "abcdefghijklmnopqrstuvwxyz";
+    Search a;
+    a.GeneticSearch(target, genes);
     system("pause");
     delete &a;
 
 
     return 0;
 }
+*/

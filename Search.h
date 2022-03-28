@@ -3,6 +3,7 @@
 
 #include "Grid.h"
 #include "Node.h"
+#include "Cell.h"
 #include <ctime>
 #include <list>
 
@@ -10,6 +11,13 @@ class Search {
     Grid grid;
     vector <int> visitedNodes;
     list <int> nodeQueue;
+
+    unsigned populationSize, generation;
+    vector <Cell> population;
+    string target, genes;
+
+    string CreateGnome();
+    chat MutatedGened();
 
     bool NodeIsVisited(int id);
     bool NodeIsQueued(int id);
@@ -20,9 +28,11 @@ class Search {
 
 public:
     explicit Search(const string &filename);
+    Search();
     ~Search();
     void BreathFirstSearch(int startNodeID);
     void DepthFirstSearch(int startNodeID);
+    void GeneticSearch(string target, string genes);
 
 };
 
